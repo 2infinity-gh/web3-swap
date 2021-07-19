@@ -34,7 +34,7 @@ async function getContractABI(x){
 
           return contractABI
         } catch (err) {
-          console.log(err.message); //can be console.error
+          	console.log(err.message); //can be console.error
         }
 }
 
@@ -119,8 +119,8 @@ function setDecimals( number, decimals ){
     let bnbPrice = await calcBNBPrice();
     console.log(`CURRENT BNB PRICE: ${bnbPrice}`);
     let priceInBnb = await calcSell(1000, fromToken,genTokenAbi)/1000; // calculate TOKEN price in BNB, sometimes setting only 1 instead of 1000 cause errors
-    console.log( 'SHIT_TOKEN VALUE IN BNB : ' + priceInBnb + ' | Just convert it to USD ' );
-    console.log(`SHIT_TOKEN VALUE IN USD: ${priceInBnb*bnbPrice}`); // convert the token price from BNB to USD based on the retrived BNB value
+    console.log( 'TOKEN VALUE IN BNB : ' + priceInBnb + ' | Just convert it to USD ' );
+    console.log(`TOKEN VALUE IN USD: ${priceInBnb*bnbPrice}`); // convert the token price from BNB to USD based on the retrived BNB value
 })();
 
 startSwap();
@@ -143,8 +143,6 @@ async function startSwap() {
 async function sellToken(targetAccount, amount) {
 	let fromTokenAbi = await getContractABI(fromToken);
     let privateKey = Buffer.from(targetAccount.privateKey.slice(2), 'hex')  ;
-
-    
     let fromTokenContract = new web3.eth.Contract(fromTokenAbi, fromToken, {from: targetAccount.address});
 	let fromTokenSymbol = await fromTokenContract.methods.symbol().call();
 	let fromTokenDec = await fromTokenContract.methods.decimals().call();
@@ -159,6 +157,7 @@ async function sellToken(targetAccount, amount) {
 	// Get count of approve transaction
     let count = await web3.eth.getTransactionCount(targetAccount.address);
 
+	
     let rawTransactionApprove = {
         "from":targetAccount.address,
         "gasPrice":web3.utils.toHex(10000000000),
@@ -186,6 +185,7 @@ async function sellToken(targetAccount, amount) {
 	/////// Get decimals and symbol of output token ////////////////
 	let toTokenDec = await toTokenContract.methods.decimals().call();
 	let toTokenSymbol = await toTokenContract.methods.symbol().call();
+	
 	////// Convert amount out with the correct decimals ////
 	let amountOutMin = setDecimals(amountOut.toString(), toTokenDec);
 	console.log("You will receive: "+amountOut/( 1 ** toTokenDec)+' '+toTokenSymbol);
