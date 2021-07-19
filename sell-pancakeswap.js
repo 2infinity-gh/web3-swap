@@ -1,5 +1,6 @@
 //// How to use: npm sell-pancakeswap.js <FROM_TOKEN_CONTRACT_ADDRESS> <TO_TOKEN_CONTRACT_ADDRESS> <AMOUNT_TO_SWAP>
 //// update my-keys.json with you walletaddress & privatekey and bscscan APIkey
+//// get an APIkey for bscscan from here https://bscscan.com/apis
 
 const fetch = require("node-fetch");
 var fs = require('fs')
