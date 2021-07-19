@@ -5,5 +5,8 @@
 "BUSDTokenAddress" : "0x78867bbeef44f2326bf8ddd1941a4439382ef2a7",
 "address" : "",
 "privateKey" : "",
-"bscScanApiKey" : "5EVSGKJ268KQ39YNJKUKRRAK9B592J5YCW"
+"bscScanApiKey" : "",
+"providerURL" : "https://data-seed-prebsc-1-s1.binance.org:8545",
+"networkID" : "97",
+"chainID" : "97"
 }
