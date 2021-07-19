@@ -1,0 +1,9 @@
+{ 
+"pancakeSwapRouterAddress" : "0x9ac64cc6e4415144c455bd8e4837fea55603e5c3",
+"pancakeSwapFactoryAddress" : "0xB7926C0430Afb07AA7DEfDE6DA862aE0Bde767bc",
+"BNBTokenAddress" : "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+"BUSDTokenAddress" : "0x78867bbeef44f2326bf8ddd1941a4439382ef2a7",
+"address" : "",
+"privateKey" : "",
+"bscScanApiKey" : "5EVSGKJ268KQ39YNJKUKRRAK9B592J5YCW"
+}
