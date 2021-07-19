@@ -1,4 +1,5 @@
-//// How to use: 
+//// How to use: npm sell-pancakeswap.js <FROM_TOKEN_CONTRACT_ADDRESS> <TO_TOKEN_CONTRACT_ADDRESS> <AMOUNT_TO_SWAP>
+//// update my-keys.json with you walletaddress & privatekey and bscscan APIkey
 
 const fetch = require("node-fetch");
 var fs = require('fs')
@@ -6,12 +7,14 @@ var Tx = require('ethereumjs-tx').Transaction;
 var Web3 = require('web3')
 var Common = require('ethereumjs-common').default;
 
-var web3 = new Web3(new Web3.providers.HttpProvider('https://data-seed-prebsc-1-s1.binance.org:8545'))
+var myKeys = JSON.parse(fs.readFileSync("my-keys.json", 'utf-8'));
+
+var web3 = new Web3(new Web3.providers.HttpProvider(myKeys.providerURL)) // mainnet: https://bsc-dataseed1.binance.org:443
 var BSC_FORK = Common.forCustomChain(
                 'mainnet',{
               name: 'bnb',
-              networkId: 97,
-              chainId: 97
+              networkId: myKeys.networdID, //mainnet: 56
+              chainId: myKeys.chainID //mainnet: 56
             },
             'petersburg'
           );
@@ -35,7 +38,7 @@ async function getContractABI(x){
 }
 
 
-var myKeys = JSON.parse(fs.readFileSync("my-keys.json", 'utf-8'));
+
 var fromToken = process.argv[2];
 var toToken = process.argv[3];
 var amountToExchange = process.argv[4];
