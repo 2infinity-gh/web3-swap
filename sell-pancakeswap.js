@@ -54,7 +54,7 @@ const factoryAbi = JSON.parse(fs.readFileSync('pancake-factory-abi.json', 'utf-8
 const factoryContract = new web3.eth.Contract(factoryAbi, pancakeSwapFactoryAddress, {from: myKeys.address});
 const genTokenAbi = JSON.parse(fs.readFileSync('general-token-abi.json', 'utf-8'));
 const toTokenContract = new web3.eth.Contract(genTokenAbi, toToken, {from: myKeys.address});
-var myKeys = JSON.parse(fs.readFileSync('my-account.json', 'utf-8'));	
+
 
 
 web3.eth.getGasPrice().then(gasPrice => {
